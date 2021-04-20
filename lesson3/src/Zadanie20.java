@@ -11,21 +11,20 @@ public class Zadanie20 {
 
     public static void main(String[] args){
 
-        String st = "Я не придумала красивую фразу, чтобы получилось слово.";
+        String st = "Так тоже работает";
 
         st = st.trim();
 
         StringTokenizer tokenizer = new StringTokenizer(st, " ,.-\":;");
         List<String> words = new ArrayList<>();
-        String result = "";
+        StringBuffer result = new StringBuffer();
 
         while (tokenizer.hasMoreTokens()){
             words.add(tokenizer.nextToken());
         }
-        for(int i=0; i< words.size();i++){
-            String temp = words.get(i);
-            int lastindex = temp.length()-1;
-            result = result + temp.charAt(lastindex);
+        for (String temp : words) {
+            int lastindex = temp.length() - 1;
+            result.append(temp.charAt(lastindex));
         }
 
         words.forEach(System.out::println);
