@@ -3,8 +3,6 @@
 Желательно учесть,что слова могут разделяться несколькими пробелами, в начале и конце текста также могут быть пробелы, но могут и отсутствовать*/
 
 
-import com.sun.javafx.binding.StringFormatter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
