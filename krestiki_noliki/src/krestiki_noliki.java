@@ -9,12 +9,12 @@ public class krestiki_noliki {
     {
         Scanner sc = new Scanner(System.in);
 
-       int[][] igra = new int[3][3];
+      char[][] igra = new char[3][3];
 
        for(int x=0;x<3;x++){
            for(int y=0;y<3;y++){
 
-               igra[x][y] = 8;
+               igra[x][y] = '*';
            }
        }
 
@@ -37,9 +37,9 @@ public class krestiki_noliki {
                    do {
                        a = sc.nextInt();
                        b = sc.nextInt();}
-                    while (igra[a][b] !=8 );
+                    while (igra[a][b] !='*' );
 
-                   igra[a][b] =1;
+                   igra[a][b] ='X';
 
                }
                else {
@@ -47,14 +47,14 @@ public class krestiki_noliki {
                        System.out.println("Игрок 2 введите координаты 0 (a b)");
                        a = sc.nextInt();
                        b = sc.nextInt();}
-                   while (igra[a][b] !=8 );
+                   while (igra[a][b] !='*' );
 
-                   igra[a][b]=0;
+                   igra[a][b]='0';
                }
 
 
                 for (int i = 0; ; i++) {
-                    if ((igra[i][0] == igra[i][1] & igra[i][1] == igra[i][2] & igra[i][0]!=8 ) || (igra[0][i] == igra[1][i] & igra[1][i] == igra[2][i] & igra[2][i]!=8) || (igra[0][0] == igra[1][1] & igra[1][1] == igra[2][2] & igra[2][2]!=8) || (igra[2][0] == igra[1][1] & igra[1][1] == igra[0][2] & igra[0][2]!=8)) {
+                    if ((igra[i][0] == igra[i][1] & igra[i][1] == igra[i][2] & igra[i][0]!='*' ) || (igra[0][i] == igra[1][i] & igra[1][i] == igra[2][i] & igra[2][i]!='*') || (igra[0][0] == igra[1][1] & igra[1][1] == igra[2][2] & igra[2][2]!='*') || (igra[2][0] == igra[1][1] & igra[1][1] == igra[0][2] & igra[0][2]!='*')) {
 
                         if(j%2 == 0) System.out.println("Игра завершена. Победил игрок 1(Х)" );
                         else System.out.println("Игра завершена. Победил игрок 2(0)" );
@@ -63,7 +63,7 @@ public class krestiki_noliki {
                     }
                     else{
                         for(int k=0;k<3; k++){
-                            if(igra[i][k] == 8) continue Igra;
+                            if(igra[i][k] == '*') continue Igra;
                             else {
                                 if(i==2 & k==2) {
                                     System.out.println("Все поля заняты. Ничья");
