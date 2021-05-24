@@ -25,12 +25,11 @@ public class Time {
     public Time(long sec){
         this.hours = (int) (sec/3600);
         this.min = (int)((sec - this.hours*3600)/60);
-        this.sec = sec - this.hours*3600 -this.min*60;
+        this.sec = sec - this.hours* 3600L -this.min*60L;
     }
 
     public long allsec(){
-        long l = sec + min*60 + hours*3600;
-        return l;
+        return sec + min*60L + hours*3600L;
     }
 
     public long compare_time(Time t1){
