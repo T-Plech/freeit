@@ -1,4 +1,4 @@
-
+package Zadanie24;
 
 public class RunnerTime {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-//Создать класс и объекты, описывающие промежуток времени. +
+package Zadanie24;//Создать класс и объекты, описывающие промежуток времени. +
 //        Сам промежуток должен задаваться 3 свойствами: секундами, минутами, часами. +
 //        Сделать методы
 //        * для получения полного количества секунд в объекте, +
@@ -36,6 +36,30 @@ public class Time {
 
         return  (this.allsec()-t1.allsec());
 
+    }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public long getSec() {
+        return sec;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public void setSec(long sec) {
+        this.sec = sec;
     }
 
     @Override
