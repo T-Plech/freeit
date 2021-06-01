@@ -58,7 +58,6 @@ public class Bankomat {
     public boolean get_money(int get_summa){
         boolean operation = false;
         if(get_summa<=summa() && (get_summa>30||get_summa==20) && get_summa%10==0){
-            operation=true;
             int get_100 = get_summa/100;
             int get_50 = (get_summa - get_100*100)/50;
             int get_20= (get_summa - get_100*100 - get_50*50)/20;
