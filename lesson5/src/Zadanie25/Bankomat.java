@@ -23,7 +23,7 @@ public class Bankomat {
     int summa;
 
     public int summa(){
-        summa = ((amount_20*20) + (amount_50*50) + (amount_100*100));
+        summa = (amount_20*20) + (amount_50*50) + (amount_100*100);
         return summa;
     }
 
