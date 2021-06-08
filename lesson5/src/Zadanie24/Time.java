@@ -17,9 +17,9 @@ public class Time {
 
 
     public Time(int sec, int min, int hours){
-        this.hours=hours;
-        this.min=min;
-        this.sec=sec;
+        this.hours= (int) (allsec()/3600);
+        this.min=(int)((allsec() - this.hours*3600)/60);
+        this.sec=allsec() - this.hours* 3600L -this.min*60L;
     }
 
     public Time(long sec){
