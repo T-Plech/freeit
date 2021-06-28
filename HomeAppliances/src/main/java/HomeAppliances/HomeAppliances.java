@@ -1,8 +1,9 @@
+package HomeAppliances;
+
 public interface HomeAppliances {
     void powerOn();
     void powerOff();
-    void inStain();
-    void offStain();
+    boolean inStain();
     int power_consumption = 220;
 
 }

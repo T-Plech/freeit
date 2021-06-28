@@ -1,3 +1,5 @@
+package Refrigerators;
+
 public class RefrigeratorLG extends Refrigerators implements Freezer {
     private String brand;
     private String model;
@@ -9,29 +11,25 @@ public class RefrigeratorLG extends Refrigerators implements Freezer {
 
     }
 
-    @Override
-    public void inStain() {
-    }
-    @Override
-    public void offStain() {
-    }
 
     @Override
     public void makeIce() {
-        freeze();
-        System.out.println("Ваш лёд кубиками готов. Подставьте стакан и нажмите на кнопку.");
+        if(getIsInStain()){
+            freeze();
+        System.out.println("Ваш лёд кубиками готов. Подставьте стакан и нажмите на кнопку.");}
+        else System.out.println("Холодильник отключен от сети питания");
     }
 
     @Override
     public void freeze() {
-        inStain();
-        System.out.println("Морозильник работает");
+        if(super.getIsInStain()) System.out.println("Морозильник работает");
+        else System.out.println("Холодильник отключен от сети питания");
 
     }
 
     @Override
     public String toString() {
-        return "RefrigeratorLG{" +
+        return "Refrigerators.RefrigeratorLG{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 super.toString() +

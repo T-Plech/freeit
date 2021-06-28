@@ -1,4 +1,4 @@
-
+package Refrigerators;
 
 public class RefrigeratorBosch extends Refrigerators{
     private String brand;
@@ -13,22 +13,17 @@ public class RefrigeratorBosch extends Refrigerators{
     }
 
 
+
     public void Vacantion(){
-        powerOn();
-        System.out.println("Потребление питания снижено. Холодильник работает в режиме \"Отпуск\". Поддержиаемая температура  " + vacationDegree);
+        if(super.getIsInStain())  System.out.println("Потребление питания снижено. Холодильник работает в режиме \"Отпуск\". Поддержиаемая температура  " + vacationDegree);
+        else System.out.println("Холодильник отключен от сети питания");
     }
 
-    @Override
-    public void inStain() {
-    }
 
-    @Override
-    public void offStain() {
-    }
 
     @Override
     public String toString() {
-        return "RefrigeratorBosch{" +
+        return "Refrigerators.RefrigeratorBosch{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                         "volume=" + super.getVolume() +
