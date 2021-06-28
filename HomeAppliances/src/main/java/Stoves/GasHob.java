@@ -11,9 +11,12 @@ public class GasHob extends Hob  {
         this.hasElectricIgnition = hasElectricIgnition;
     }
 
+    boolean isInStain;
+
+
     @Override
     public void burnerOn() {
-       if(hasElectricIgnition = true) {inStain(); System.out.println("Чирк-чирк, пуффф. Огонь горит");}
+       if((hasElectricIgnition)&&(isInStain)) { System.out.println("Чирк-чирк, пуффф. Огонь горит");}
        else System.out.println("Возьмите спички. Огонь горит");
     }
 
@@ -33,9 +36,9 @@ public class GasHob extends Hob  {
 
     @Override
     public boolean inStain() {
-        if(hasElectricIgnition=true) System.out.println("Варочная панель подключена к сети питания");
-        else System.out.println("Ты включил что-то другое.");
-        return true;
+        if(hasElectricIgnition) {System.out.println("Варочная панель подключена к сети питания"); isInStain =true;}
+        else {System.out.println("Ты включил что-то другое."); isInStain=false;}
+        return isInStain;
     }
 
     @Override
