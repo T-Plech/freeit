@@ -13,6 +13,7 @@ public abstract class Hob implements HomeAppliances{
     private String brand;
     private String model;
 private String coating;
+private int burnerCount;
 
     public void burnerOn(){
     }

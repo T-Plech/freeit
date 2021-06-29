@@ -4,10 +4,9 @@ package Stoves;
 public class GasHob extends Hob  {
 
     private boolean hasElectricIgnition;
-    private int burnerCount;
+
     public GasHob(String brand, String model, String coating, int burnerCount, boolean hasElectricIgnition) {
-        super(brand, model, coating);
-        this.burnerCount=burnerCount;
+        super(brand, model, coating,burnerCount);
         this.hasElectricIgnition = hasElectricIgnition;
     }
 
@@ -46,7 +45,6 @@ public class GasHob extends Hob  {
         return "GasHob{" +
                 super.toString() +
                 "hasElectricIgnition=" + hasElectricIgnition +
-                ", burnerCount=" + burnerCount +
                 '}';
     }
 }
