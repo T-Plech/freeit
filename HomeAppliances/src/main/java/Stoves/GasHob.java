@@ -1,6 +1,5 @@
 package Stoves;
 
-
 public class GasHob extends Hob  {
 
     private boolean hasElectricIgnition;

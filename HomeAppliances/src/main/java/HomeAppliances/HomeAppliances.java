@@ -6,4 +6,7 @@ public interface HomeAppliances {
     boolean inStain();
     int power_consumption = 220;
 
+    default void offStain() {
+        System.out.println("Прибор отключен от сети питания");
+    }
 }
