@@ -1,8 +1,5 @@
 package bankCards;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public abstract class DebetCards implements Cards{
@@ -10,7 +7,7 @@ public abstract class DebetCards implements Cards{
     String type;
     double balance;
     String validityStr;
-    Date date = new Date();
+
 
     public DebetCards(String bank, String type, String validityStr) {
         this.bank = bank;
@@ -18,18 +15,6 @@ public abstract class DebetCards implements Cards{
         this.validityStr = validityStr;
 
     }
-
-    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    Date validity;
-
-    {
-        try {
-            validity = format.parse(validityStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @Override
     public String toString() {
@@ -42,38 +27,29 @@ public abstract class DebetCards implements Cards{
 
 
     @Override
-    public void pay(double cost) {
+    public void pay(double cost, Date today) {
 
-        if(validity.after(date)){
         if(balance>=cost)  {
             balance -=cost;
         System.out.println("Операция произведена успешно");
         }
         else System.out.println("Недостаточно средств");}
-        else System.out.println("Срок действия карты истек");
-    }
+
 
     @Override
-    public void getMoney(double summa) {
-        if(validity.after(date)){
+    public void getMoney(double summa, Date today) {
         if(balance>=summa){balance-=summa;
         System.out.println("Вы сняли наличными " + summa +" р.");}
         else System.out.println("Недостаточно средств"); }
-        else System.out.println("Срок действия карты истек");
+
+    @Override
+    public void setMoney(double summa, Date today) {
+        balance+=summa;
     }
 
     @Override
-    public void setMoney(double summa) {
-        if(validity.after(date)){balance+=summa;}
-        else System.out.println("Срок действия карты истек");
-
-    }
-
-    @Override
-    public double balance() {
-        if (validity.after(date)) {
+    public double balance( Date today) {
             return balance;
-        } else {System.out.println("Срок действия карты истек"); return  0;}
     }
 
     public String getBank() {

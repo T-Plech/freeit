@@ -1,8 +1,8 @@
 package bankCards;
 
-import java.util.Calendar;
-import java.util.Calendar.Builder;
-import java.util.GregorianCalendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AlfaVisaGold extends DebetCards {
     String cardOwner;
@@ -15,19 +15,41 @@ public class AlfaVisaGold extends DebetCards {
 
     }
 
+    Date validity;
+     SimpleDateFormat format = new SimpleDateFormat("yy/MM");
+    {
+        try {
+            validity = format.parse(validityStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
-    public void pay(double cost) {
+    public void pay(double cost, Date today) {
+        if(today.before(validity)){
         System.out.println("Приложите карту.");
-        super.pay(cost);
-        System.out.println("Остаток " + super.balance);
+        super.pay(cost, today);
+        System.out.println("Остаток " + super.balance);}
+        else System.out.println("Истек срок действия карты");
     }
 
     @Override
-    public void getMoney(double summa) {
+    public void getMoney(double summa, Date today) {
+        if(today.before(validity)){
        System.out.println("Приложите карту. Введите пин-код");
-        super.getMoney(summa);
-        System.out.println("Остаток " + super.balance);
+        super.getMoney( summa, today);
+        System.out.println("Остаток " + super.balance);}
+        else System.out.println("Истек срок действия карты");
+    }
+
+    @Override
+    public void setMoney(double summa, Date today){
+        if(today.before(validity)){
+            super.setMoney(summa,today);
+        }
+        else System.out.println("Истек срок действия карты");
     }
 
     public String getCardOwner() {
@@ -53,7 +75,7 @@ public class AlfaVisaGold extends DebetCards {
                 ", cardNumber=" + cardNumber +
                 ", bank='" + bank + '\'' +
                 ", type='" + type + '\'' +
-                ", validity = " + validity + '\'' +
+                ", validity = " + validityStr + '\'' +
                 '}';
     }
 }
