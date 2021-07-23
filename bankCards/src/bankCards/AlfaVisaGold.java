@@ -16,7 +16,7 @@ public class AlfaVisaGold extends DebetCards {
     }
 
     Date validity;
-     SimpleDateFormat format = new SimpleDateFormat("yy/MM");
+     SimpleDateFormat format = new SimpleDateFormat("MM/yy");
     {
         try {
             validity = format.parse(validityStr);
