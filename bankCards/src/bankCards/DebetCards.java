@@ -2,56 +2,26 @@ package bankCards;
 
 import java.util.Date;
 
-public abstract class DebetCards implements Cards{
-    String bank;
-    String type;
-    double balance;
-    String validityStr;
+public abstract class DebetCards extends Cards{
+    
+	String cardProgram;
 
-
-    public DebetCards(String bank, String type, String validityStr) {
-        this.bank = bank;
-        this.type = type;
-        this.validityStr = validityStr;
-
+	
+    public DebetCards(String bank, String type, String validityStr, String cardProgram) {
+    	super(bank, type,validityStr);
+    	this.cardProgram=cardProgram;    
     }
 
-    @Override
-    public String toString() {
-        return "DebetCards{" +
-                "bank='" + bank + '\'' +
-                ", type='" + type + '\'' +
-                ", validity=" +validityStr +
-                '}';
-    }
-
-
-    @Override
-    public void pay(double cost, Date today) {
-
-        if(balance>=cost)  {
-            balance -=cost;
-        System.out.println("Операция произведена успешно");
-        }
-        else System.out.println("Недостаточно средств");}
-
+    
 
     @Override
     public void getMoney(double summa, Date today) {
-        if(balance>=summa){balance-=summa;
+        if(balance>=summa){super.getMoney(summa, today);
         System.out.println("Вы сняли наличными " + summa +" р.");}
         else System.out.println("Недостаточно средств"); }
 
-    @Override
-    public void setMoney(double summa, Date today) {
-        balance+=summa;
-    }
-
-    @Override
-    public double balance( Date today) {
-            return balance;
-    }
-
+   
+    
     public String getBank() {
         return bank;
     }
@@ -75,6 +45,17 @@ public abstract class DebetCards implements Cards{
     public void setValidityStr(String validityStr) {
         this.validityStr = validityStr;
     }
+
+
+
+
+	@Override
+	public String toString() {
+		return "DebetCards "+ super.toString()
+				+ "[cardProgram=" + cardProgram +  "]";
+	}
+    
+    
 
 
 }

@@ -2,25 +2,32 @@ package bankCards;
 
 import java.util.Date;
 
-public abstract class CreditCards implements Cards{
-    String bank;
-    String type;
-    String validityStr;
+public class CreditCards extends Cards{
+    
     double moneyClient;
     double moneyCredit;
     double debt;
+    double yearRate;
+    String creditName;
+    String cardOwner;
+    long cardNumber;
 
-
-    public CreditCards(String bank, String type,String validityStr, double moneyClient, double moneyCredit){
-        this.bank=bank;
-        this.type=type;
-        this.validityStr=validityStr;
+    public CreditCards(String bank, String type, String validityStr,   double yearRate, String creditName, String cardOwner, long cardNumber, double moneyClient, double moneyCredit){
+        super(bank, type,validityStr);
         this.moneyClient = moneyClient;
         this.moneyCredit = moneyCredit;
+        this.yearRate = yearRate;
+        this.creditName=creditName;
+        this.cardOwner=cardOwner;
+        this.cardNumber=cardNumber;
+        
+        super.balance=moneyClient + moneyCredit;
+        
     }
 
     @Override
     public void pay(double cost, Date today) {
+    	if(super.valid) {    	
         if((moneyClient+moneyCredit)>=cost){
                 if(moneyClient<cost){
                 cost-=moneyClient;
@@ -32,12 +39,14 @@ public abstract class CreditCards implements Cards{
                 if(moneyClient>=cost)moneyClient-=cost;}
         System.out.println("Произведена оплата в размере " + cost +"р.");
         }
-        else System.out.println("Недостаточно средств");
+        else System.out.println("Недостаточно средств");}
+    	else System.out.println("Истек срок действия карты");
 
     }
 
     @Override
     public void getMoney(double summa, Date today) {
+    	if(super.valid) {
         if((moneyClient+moneyCredit)>=summa){
                 if(moneyClient<summa){
                 summa-=moneyClient;
@@ -48,12 +57,15 @@ public abstract class CreditCards implements Cards{
                 if(moneyClient>=summa)moneyClient-=summa;}
         System.out.println("Снятие " + summa + "р. Произведено успешно.");
         }
-        else System.out.println("Недостаточно средств");
+        else System.out.println("Недостаточно средств");}
+    	else System.out.println("Истек срок действия карты");
+    	
 
     }
 
     @Override
     public void setMoney(double summa, Date today) {
+    	if(super.valid) {
         if (debt<=summa){
                 summa-=debt;
                 moneyCredit+=debt;
@@ -65,31 +77,36 @@ public abstract class CreditCards implements Cards{
             moneyCredit+=summa;
         }
 
-        System.out.println("Зачислено " + summa);
+        System.out.println("Зачислено " + summa);}
+    	else System.out.println("Истек срок действия карты");
     }
 
     @Override
-    public double balance(Date today) {
+    public void balance(Date today) {
+    	
+    	if(super.valid) {  	
+    	
         System.out.println("Баланс: \n Личные средства: " + moneyClient + "\n Средства банка: " + moneyCredit + "\n Долг перед банком: " + debt );
-        return (moneyClient+moneyCredit);
+       
     }
+    	else System.out.println("Истек срок действия карты");
+    	}
 
-    public String getBank() {
-        return bank;
-    }
-
-    public void setBank(String bank) {
-        this.bank = bank;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    
+    @Override
+	public String toString() {
+		return "CreditCards ["
+				+ super.toString() + 
+				", moneyClient=" + moneyClient + 
+				", moneyCredit=" + moneyCredit + 
+				", debt=" + debt +
+				", yearRate=" + yearRate +
+				", creditName=" + creditName + 
+				", cardOwner=" + cardOwner + 
+				", cardNumber=" + cardNumber + 
+				 "]";
+	}   
+    
     public double getMoneyClient() {
         return moneyClient;
     }
@@ -105,4 +122,14 @@ public abstract class CreditCards implements Cards{
     public void setMoneyCredit(double moneyCredit) {
         this.moneyCredit = moneyCredit;
     }
+    
+    public double getYearRate() {
+    	return yearRate;
+    }
+    
+    public void setYearRate(double yearRate) {
+    	this.yearRate=yearRate;
+    }
+    
+    
 }
