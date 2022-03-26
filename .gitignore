@@ -28,4 +28,14 @@ out/
 *.iml
 
 
-generated
+#generated
+
+bin/
+out/
+gen/
+
+#Eclipse project files
+.classpath
+.project
+.settings
+
