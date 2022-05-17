@@ -37,13 +37,13 @@ import java.util.Scanner;
 
 public class ConsolMenu {
 	
-	Library myLib = new Library();
+//	Library myLib = new Library();
 	
 	static Scanner sc = new Scanner(System.in);
 	static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	
 	@SuppressWarnings("finally")
-	public void start() {
+	public void start(Library myLib) {
 		
 		int choose = 0;
 Start: {
